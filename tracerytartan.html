@@ -1,0 +1,116 @@
+<html xml:lang="en">
+<head>
+<title>
+    A Random Tartan
+</title>
+</head>
+<body>
+
+<h1>Random Tartan Generator</h1>
+<p>
+  Generates a threadcount with Tracery, then displays it as an SVG image.
+</p>
+
+<svg  width="1024" height="512" viewBox="0 0 300 300"
+     xmlns="http://www.w3.org/2000/svg" version="1.1">
+     <style>
+        .LR {fill: #EC34C4;}
+        .R {fill: #DC0000;}
+        .DR {fill: #960000;}
+        .O {fill: #EC8048;}
+        .DO {fill: #B84C00;}
+        .LY {fill: #F9F5C8;}
+        .Y {fill: #FFFF00;}
+        .DY {fill: #BC8C00;}
+        .LG {fill: #86C67C;}
+        .G {fill: #008B00;}
+        .DG {fill: #004028;}
+        .LB {fill: #82CFFD;}
+        .B {fill: #0000FF;}
+        .DB {fill: #000080;}
+        .LP {fill: #C49CD8;}
+        .P {fill: #AA00FF;}
+        .DP {fill: #440044;}
+        .W {fill: #FFFFFF;}
+        .LN {fill: #E0E0E0;}
+        .N {fill: #C8C8C8;}
+        .DN {fill: #5C5C5C;}
+        .K {fill: #101010;}
+        .LT {fill: #A08858;}
+        .T {fill: #98481C;}
+        .DT {fill: #4C3428;}
+
+    </style>
+    <desc id="svg_threadcount"></desc>
+    <g id="patterns"></g>
+
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#warp)" />
+  <rect x="0" y="0" width="100%" height="100%" fill="url(#weft)" />
+
+</svg>
+<div id="threadcount"></div>
+<a href="javascript:roll()">roll</a>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+
+<script>
+    function roll() {
+        console.log('rolling');
+        let grammar = tracery.createGrammar({
+            "origin": ["#threaddef# #threaddef# #threaddef# #threaddefs#"],
+            "threaddefs": ["#threaddef# #threaddefs#", "#threaddef#"],
+            "threaddef": ["#colour##count#"],
+            "colour": [
+                "LR", "R", "DR", "O", "DO", "LY", "Y", "DY", "LG", "G", "DG", "LB", "B",
+                "DB", "LP", "P", "DP", "W", "LN", "N", "DN", "K", "LT", "T", "DT"
+            ],
+            "count": ["#digit0##digit1#", "10", "20"],
+            "digit0": ["", "1", "2", "3", "", ""],
+            "digit1": ["2", "4", "6", "8"]
+        });
+        let threadcount = grammar.flatten('#origin#');
+        console.log(threadcount);
+        document.getElementById('threadcount').innerText = threadcount;
+        document.getElementById('svg_threadcount').innerText = threadcount;
+        document.getElementById('patterns').innerHTML = threadcountToSVG(threadcount);
+
+    }
+
+    function threadcountToSVG(threadcount) {
+        let thread_index = 0;
+        let warp_threads = [];
+        let weft_threads = [];
+        let thread_definitions = [... threadcount.matchAll(/([A-Z]+)(\d+)/g)
+    ]
+        console.log('creating warp and weft');
+        let thread_definitions_count = thread_definitions.length;
+        for (let i = 0; i < thread_definitions_count; i += 1) {
+            let this_definition = thread_definitions[i];
+            let colour = this_definition[1];
+            for (let j = 0; j < parseInt(this_def inition[2]); j += 1) {
+                warp_threads.push(
+                    `<rect class="${colour}" x="${thread_index}" width="1" height="1" y="${thread_index % 2}"/>`
+                );
+                weft_threads.push(
+                    `<rect class="${colour}" x="${Math.abs(thread_index % 2 - 1)}" width="1" height="1" y="${thread_index}"/>`
+                );
+                thread_index += 1;
+            }
+        }
+        return `<pattern id="warp" width="${thread_index}" height="2" patternUnits="userSpaceOnUse">${warp_threads.join('')}</pattern>
+        <pattern id="weft" width="2" height="${thread_index}" patternUnits="userSpaceOnUse">${weft_threads.join('')}</pattern>`;
+    }
+    threadcount = 'B24 W4 B24 R2 K24 G24 W2'
+    console.log(threadcount);
+    document.getElementById('threadcount').innerText = threadcount;
+    document.getElementById('svg_threadcount').innerText = threadcount;
+    document.getElementById('patterns').innerHTML = threadcountToSVG(threadcount);
+
+
+
+</script>
+<script src="https://cdn.rawgit.com/oncomouse/oncomouse.github.io/9b1cb417/javascripts/tracery/tracery.min.js" onload="roll()"></script>
+</body>
+</html>
