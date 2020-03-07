@@ -22,10 +22,17 @@ By default, the generated image will be 512x512 pixels. You can specify height a
 
 .. image:: images/tartan_100x512.png
 
+.. code-block:: sh
+
+    $ tartan "LB24 DB4 G24 R2 Lr24 G24 W2" --height 100 > tartan_512x100.png
+
 .. image:: images/tartan_100x512.png
 
-    $ tartan "DY20 W4 DR6" --height 100 > tartan_512x100.png
+.. code-block:: sh
+
     $ tartan "DY20 W4 DR6" --width 100 --height 100 > tartan_100x100.png
+
+.. image:: images/tartan_100x100.png
 
 Python Interface
 ----------------
