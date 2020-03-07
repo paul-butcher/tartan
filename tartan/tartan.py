@@ -66,6 +66,7 @@ def unroll_reflection(thread_count):
         return ' '.join(blocks + blocks[-2:0:-1])
     return thread_count
 
+
 def create_alternating_mask(size):
     """
     Creates a mask to be used in compositing the warp and weft images into
