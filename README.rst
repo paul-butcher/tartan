@@ -26,16 +26,16 @@ Features
 --------
 
 * Command line interface to generate a PNG image from a threadcount.
-* Function to generate a PIL image in memory.
+* Generate a PIL image in memory.
 * Generate images with your preferred size.
-
+* Repeating and reflective setts.
 
 See also
 --------
 
 * `Guidance about threadcounts <https://www.tartanregister.gov.uk/threadcount>`_  from the Scottish Register of Tartans.
 * `@RandomTartan, <https://twitter.com/RandomTartan>`_ a Twitter bot that uses this library.
-* `filly-more, <https://github.com/paul-butcher/filly-more>`_ a Glitch project that uses this application.
+* `filly-more, <https://github.com/paul-butcher/filly-more>`_ a Glitch project that demonstrates this application.
 
 Credits
 -------
