@@ -26,7 +26,7 @@ By default, the generated image will be 512x512 pixels. You can specify height a
 
     $ tartan "LB24 DB4 G24 R2 Lr24 G24 W2" --height 100 > tartan_512x100.png
 
-.. image:: images/tartan_100x512.png
+.. image:: images/tartan_512x100.png
 
 .. code-block:: sh
 
