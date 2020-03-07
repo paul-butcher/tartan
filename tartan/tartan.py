@@ -61,6 +61,17 @@ def parse_threadcount(thread_count):
 
 
 def unroll_reflection(thread_count):
+    """
+    If a threadcount is a symmetrical, as signified by the /, "unroll" it by reversing the
+    non-terminal stripes:
+
+    >>> unroll_reflection('B/1 LB1 Y/1')
+    'B/1 LB1 Y/1 LB1'
+
+    NOOP if not symmetrical
+    >>> unroll_reflection('B1 LB1 Y1')
+    'B1 LB1 Y1'
+    """
     if '/' in thread_count:
         blocks = thread_count.split(' ')
         return ' '.join(blocks + blocks[-2:0:-1])
@@ -96,7 +107,7 @@ def draw_weave(threads, size):
     Given a list of thread colours, produce an image representing those threads woven as tartan
     i.e. an even weave with an identical sequence of threads in both warp and weft
     """
-    warp, weft, mask = initialise_images(size)
+    warp, weft, mask = _initialise_images(size)
     warp_draw = ImageDraw.Draw(warp)
     weft_draw = ImageDraw.Draw(weft)
     total_threads = len(threads)
@@ -109,9 +120,18 @@ def draw_weave(threads, size):
     return warp
 
 
-def initialise_images(size):
+def _initialise_images(size):
+    """
+    It takes three same-sized images to make a tartan.
+    1. The warp stripes
+    2. The weft stripes
+    3. The mask that makes the weft appear to go "behind" the warp
+    """
     return Image.new('RGBA', size), Image.new('RGBA', size), create_alternating_mask(size)
 
 
 def threadcount_to_image(threadcount, size):
+    """
+    Turns a threadcount definition into a PIL Image of the given size.
+    """
     return draw_weave(parse_threadcount(threadcount), size)
