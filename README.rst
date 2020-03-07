@@ -30,6 +30,13 @@ Features
 * Generate images with your preferred size.
 
 
+See also
+--------
+
+* `Guidance about threadcounts <https://www.tartanregister.gov.uk/threadcount>`_  from the Scottish Register of Tartans.
+* `@RandomTartan, <https://twitter.com/RandomTartan>`_ a Twitter bot that uses this library.
+* `filly-more, <https://github.com/paul-butcher/filly-more>`_ a Glitch project that uses this application.
+
 Credits
 -------
 
