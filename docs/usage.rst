@@ -34,6 +34,15 @@ By default, the generated image will be 512x512 pixels. You can specify height a
 
 .. image:: images/tartan_100x100.png
 
+Reflective or symmetrical tartans can be specified by including '/' between the colour and count.
+
+.. code-block:: sh
+
+    $ tartan "B/24 W4 B24 R2 K24 G24 W/2" --width 200 --height 100 > tartan_100x100.png
+
+.. image:: images/tartan_200x100.png
+
+
 Python Interface
 ----------------
 
