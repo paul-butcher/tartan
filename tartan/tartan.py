@@ -8,31 +8,31 @@ from PIL import Image, ImageDraw
 THREAD_DEF_EXPR = r'([A-Z]+)/?(\d+)'
 THREAD_COUNT_EXPR = '({0} )*{0}$'.format(THREAD_DEF_EXPR)
 COLOURS = {
-    "LR": "#EC34C4",
-    "R": "#DC0000",
-    "DR": "#960000",
-    "O": "#EC8048",
-    "DO": "#B84C00",
-    "LY": "#F9F5C8",
-    "Y": "#FFFF00",
-    "DY": "#BC8C00",
-    "LG": "#86C67C",
-    "G": "#008B00",
-    "DG": "#004028",
-    "LB": "#82CFFD",
-    "B": "#0000FF",
-    "DB": "#000080",
-    "LP": "#C49CD8",
-    "P": "#AA00FF",
-    "DP": "#440044",
-    "W": "#FFFFFF",
-    "LN": "#E0E0E0",
-    "N": "#C8C8C8",
-    "DN": "#5C5C5C",
-    "K": "#101010",
-    "LT": "#A08858",
-    "T": "#98481C",
-    "DT": "#4C3428"
+    "LR": ["#EC34C4", "Light red"],
+    "R": ["#DC0000", "Red"],
+    "DR": ["#960000", "Dark red"],
+    "O": ["#EC8048", "Orange"],
+    "DO": ["#B84C00", "Dark orange"],
+    "LY": ["#F9F5C8", "Light yellow"],
+    "Y": ["#FFFF00", "Yellow"],
+    "DY": ["#BC8C00", "Dark yellow"],
+    "LG": ["#86C67C", "Light green"],
+    "G": ["#008B00", "Green"],
+    "DG": ["#004028", "Dark green"],
+    "LB": ["#82CFFD", "Light blue"],
+    "B": ["#0000FF", "Blue"],
+    "DB": ["#000080", "Dark blue"],
+    "LP": ["#C49CD8", "Light purple"],
+    "P": ["#AA00FF", "Purple"],
+    "DP": ["#440044", "Deep Purple"],
+    "W": ["#FFFFFF", "White"],
+    "LN": ["#E0E0E0", "Light grey"],
+    "N": ["#C8C8C8", "Grey"],
+    "DN": ["#5C5C5C", "Dark grey"],
+    "K": ["#101010", "Black"],
+    "LT": ["#A08858", "Light brown"],
+    "T": ["#98481C", "Brown"],
+    "DT": ["#4C3428", "Dark brown"]
 }
 
 
@@ -112,9 +112,9 @@ def draw_weave(threads, size):
     weft_draw = ImageDraw.Draw(weft)
     total_threads = len(threads)
     for index in range(size[0]):
-        warp_draw.line((index, 0, index, size[1]), fill=threads[index % total_threads])
+        warp_draw.line((index, 0, index, size[1]), fill=threads[index % total_threads][0])
     for index in range(size[1]):
-        weft_draw.line((0, index, size[0], index), fill=threads[index % total_threads])
+        weft_draw.line((0, index, size[0], index), fill=threads[index % total_threads][0])
 
     warp.paste(weft, mask=mask)
     return warp
