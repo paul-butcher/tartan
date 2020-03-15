@@ -17,8 +17,6 @@ def main():
         'Colours are specified using a one or two letter abbreviation: \n\n' + format_colour_table()
     )
     args = parser.parse_args()
-    if args.help:
-        print("help")
     img = threadcount_to_image(args.threadcount, (args.width, args.height))
     img.save(sys.stdout.buffer, format="PNG")
     return 0

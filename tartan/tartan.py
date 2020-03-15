@@ -121,9 +121,9 @@ def draw_weave(threads, size):
     weft_draw = ImageDraw.Draw(weft)
     total_threads = len(threads)
     for index in range(size[0]):
-        warp_draw.line((index, 0, index, size[1]), fill=threads[index % total_threads][0])
+        warp_draw.line((index, 0, index, size[1]), fill=threads[index % total_threads])
     for index in range(size[1]):
-        weft_draw.line((0, index, size[0], index), fill=threads[index % total_threads][0])
+        weft_draw.line((0, index, size[0], index), fill=threads[index % total_threads])
 
     warp.paste(weft, mask=mask)
     return warp
