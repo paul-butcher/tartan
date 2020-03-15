@@ -9,7 +9,7 @@ script: tox
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
-  user: Paul.Butcher
+  user: __token__
   password:
     secure: YBQ4sZ7LUadchNOmYYqW9qnvpJ17NtVaizx0CmQNk/vO+MadRs07iaU+dXG9RQ4na2mXpiVPcktvKVJ+lZEeYAUeiqJ+Y9GD3twC3fhkzNywC4TnJSJTCTY0/9tQTAflluTZV54Rv0qbZyaxPfHKX1H0fCMaqLu38YFQ6bFAkvuAq0Ta69wqJ8gEogH17t5PaBiBT1zmxgLj092k6nCk2ioY7vYHL3ruL2V9tly/s8NkdFkcCJbNGnuLSGY/4q3Yyrj1F/MORX6WWOSKm+YN2qCfDRR+zMypKkBUpsXV1+j9tNk5ANJyDLs5YS0HBOdp/10OFfIdkvc+VPV1/6ehEFmCtyYuXvHqx7uNbQdfHMsK/38FtiLays+ItRS0ypNcUxmnmG+Fj/uDj6WuFni9DMXjQzYI7OTB1d3+sYoTT79g5zcrUK0rfxZSpCO0l4cdWgKYsjiq5UujMJ0IDWtaJTvE76oXCkOBnbwMJD1tynoKNmsRwfal5sadqIpcIDyFGhsFl1+33SeIeBsgq7dI3uzW1JE+SEHxaQT3olIJwATK7jXSgdOm/ZaiWiBUNbNeKdJ5YzOfsTOhqWvn5DXd7g1YE9srExQtM5YAkOWuJriOrl8W5sEhasIUoZo+9yvZuFEGhD75I3F3g/phz/isHLbVVpzJjJNplu9P9ihv5WM=
   on:
