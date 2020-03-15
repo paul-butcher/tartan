@@ -2,9 +2,6 @@
 
 """Tests for `tartan` package."""
 
-import pytest
-
-
 from tartan import tartan
 
 

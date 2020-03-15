@@ -1,6 +1,7 @@
 """
 Draw tartans from their thread count definitions
 """
+import itertools
 import re
 from PIL import Image, ImageDraw
 
@@ -50,15 +51,23 @@ def parse_threadcount(thread_count):
     >>> parse_threadcount('K2 T3')
     ['#101010', '#101010', '#98481C', '#98481C', '#98481C']
     """
-    threads = []
-    thread_def_matcher = re.compile(THREAD_DEF_EXPR)
+    stripe_def_matcher = re.compile(THREAD_DEF_EXPR)
 
     thread_count = unroll_reflection(thread_count)
+    return list(itertools.chain.from_iterable(
+        stripe_def_to_list(stripe_def[0], stripe_def[1]) for stripe_def in stripe_def_matcher.findall(thread_count)
+    ))
 
-    for thread_def in thread_def_matcher.findall(thread_count):
-        threads.extend([COLOURS[thread_def[0]]] * int(thread_def[1]))
-    return threads
 
+def stripe_def_to_list(colour_code, threads):
+    """
+    Turns a stripe definition into a list of threads.
+
+    The list consists of n strings of the requested colour.
+    >>> stripe_def_to_list('DR', '5')
+    ['#960000', '#960000', '#960000', '#960000', '#960000']
+    """
+    return [COLOURS[colour_code][0]] * int(threads)
 
 def unroll_reflection(thread_count):
     """
