@@ -15,7 +15,7 @@ tartan
 
 
 
-Generates tartan images from threadcount definitions.
+Renders tartan images from threadcount definitions.
 
 
 * Free software: MIT license
