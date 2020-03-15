@@ -2,6 +2,6 @@
 
 __author__ = """Paul Butcher"""
 __email__ = 'paul.butcher@gmail.com'
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 from .tartan import threadcount_to_image
