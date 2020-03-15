@@ -11,4 +11,4 @@ History
 ------------------
 
 * threadcount_to_image can now be imported from tartan, rather than tartan.tartan
-
+* Better CLI help
